@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Аккаунт</title>
+<link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.0/mustache.min.js"></script>
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <link rel="stylesheet" href="../static/css/formStyles.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+</head>
+<body>
+
+
+  <div class="nav">
+      <div class="container">
+        <ul class = "pull-left">
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="game.html">Вправи</a></li>
+            <li><a href="statistic.html">Статистика</a></li>
+          </ul>
+  		<ul class= "pull-right">
+  			<li><a href="index.html">Вихід</a></li>
+  		</ul>
+</div>
+</div>
+<div class="accountWrap"> 
+
+		<h1>Ваш особистий кабінет</h1>
+
+	<div class = "row">
+		<div class = "col-md-6 pull-left">
+
+<div class="form-group">
+    	
+  	</div>
+ 	<div class="form-group">
+    	<label >{{name}}</label>
+  	</div>
+  	<div class="form-group" >
+    	<label>{{surname}}</label>
+  	</div>
+  	<div class="form-group">
+    	<label>{{email}}</label>
+  	</div>
+
+	</div>
+<div class = "col-md-6 pull-right">
+			<form action="default.php" class = "inline-form" enctype="multipart/form-data" method = "post">
+				<div class="form-group form-inline">
+					<img src="../static/images/default-avatar.png" class="img-responsive img-circle"  id = "avatar">
+				</div>
+				<div class="form-group">
+					<label class="custom-file-input" for="Upload" ></label>
+					<input id="Upload" type="file" multiple="multiple" name="_photos" accept="image/*" style="visibility: hidden">
+
+					<button id="new_photo_submit_button_account" type="submit" class="btn btn-primary">Внести зміни</button>
+				</div>
+			</form>
+		</div>
+
+	</diV>
+
+
+	<form action="/action_page.php">
+  <div class="form-group">
+    <label>Змінити ім'я та прізвище:</label>
+    <input id="new_name_account" type="text" class="form-control" required="required" placeholder="Нове ім'я">
+  </div>
+  <div class="form-group">
+    <input id="new_surname_account" type="text" class="form-control" required="required" placeholder="Нове прізвище">
+  </div>
+  <button id="new_name_surname_submit_button_account" type="submit" class="btn btn-primary">Внести зміни</button>
+</form>	
+
+	<form action="/action_page.php">
+	  <div class="form-group">
+	    <label for="newmail">Змінити e-mail:</label>
+	    <input id="new_email_account" type="email" class="form-control" required="required" placeholder="Новий e-mail">
+	  </div>
+	  
+	  <button id="new_email_submit_button_account" type="submit" class="btn btn-primary">Внести зміни</button>
+	</form>
+
+	<form action="/action_page.php">
+	  <div class="form-group">
+	    <label>Змінити пароль:</label>
+	    <input id="old_password_account" type="password" class="form-control" required="required" placeholder="Введіть старий пароль">
+	  </div>
+
+	  <div class="form-group">
+	    <input id="new_password_account" type="password" class="form-control" required="required" placeholder="Введіть новий пароль">
+	  </div>
+
+	  <div class="form-group">
+	    <input id="repeat_new_password_account" type="password" class="form-control" required="required" placeholder="Повторіть пароль">
+	  </div>
+	  <button  id="new_password_submit_button_account" type="submit" class="btn btn-primary	">Внести зміни</button>
+	</form>
+
+	</div>
+</div>
+</body>
+
+</html>

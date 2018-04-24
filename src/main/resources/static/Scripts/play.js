@@ -15,12 +15,12 @@ var playState =
 {
 
     preload: function () {
-        game.load.image('MenuImg', '../static/Backgrounds/Menu2.png');
-        game.load.image('background', '../static/Backgrounds/orig.jpg');
-        game.load.image('Continue', '../static/Backgrounds/Contin.png');
-        game.load.image('firefly', '../static/Backgrounds/FireFly.png');
-        game.load.image('fireflyWorng', '../static/Backgrounds/FireFlyWrong.png');
-        game.load.image('downPanel', '../static/Backgrounds/downPanel.png');
+        game.load.image('MenuImg', 'src/main/resources/static/Backgrounds/Menu2.png');
+        game.load.image('background', 'src/main/resources/static/Backgrounds/orig.jpg');
+        game.load.image('Continue', 'src/main/resources/static/Backgrounds/Contin.png');
+        game.load.image('firefly', 'src/main/resources/static/Backgrounds/FireFly.png');
+        game.load.image('fireflyWorng', 'src/main/resources/static/Backgrounds/FireFlyWrong.png');
+        game.load.image('downPanel', 'src/main/resources/static/Backgrounds/downPanel.png');
 
     },
     create: function () {

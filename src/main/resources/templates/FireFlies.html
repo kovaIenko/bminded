@@ -3,47 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="../static/css/bootstrap.css">
-    <link rel="stylesheet" href="../static/css/formStyles.css">
     <!-- LESS основний файл -->
-    <link rel="stylesheet/less" type="text/css" href="../static/css_less/style.less" />
+    <link rel="stylesheet/less" type="text/css" href="src/main/resources/static/css_less/style.less" />
     <!-- LESS JavaScript компілятор -->
-    <script rel = "../static/css_less/less.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
 </head>
 <body>
-
-<div class="nav">
-      <div class="container">
-        <ul class = "pull-left">
-            <li><a href="index.html">Головна</a></li>
-            <li><a href="game.html">Вправи</a></li>
-            <li><a href="statistic.html">Статистика</a></li>
-            <li><a href="account.html">Аккаунт</a>
-    
-  </li>
-<!--hidden шоб приховати-->
-          </ul>
-          <ul class = "pull-right">
-            <div >
-            <li><a href="login.html">Вихід</a></li>
-          </div>
-            <div hidden="">
-              <li><a href="login.html">Вхід</a></li>
-              <li><a href="register.html">Реєстрація</a></li>
-            </div>
-        </ul>
-      </div>
-    </div>
-<div hidden="">{{level}}</div>
-<div id="skin" class = "gameDiv"><div id="game"></div></div>
-
-<script src="../static/Scripts/phaser.min.js"></script>
-<script src="../static/Scripts/StartScreen.js"></script>
-<script src="../static/Scripts/LevelAchieved.js"></script>
-<script src="../static/Scripts/LevelFailed0Tries.js"></script>
-<script src="../static/Scripts/LevelFailedTries.js"></script>
-<script src="../static/Scripts/play.js"></script>
-<script src="../static/Scripts/menu.js"></script>
-<script src="../static/Scripts/main.js"></script>
+<div id="skin"><div id="game"></div></div>
+<div></div>
+<script src="src/main/resources/static/Scripts/phaser.min.js"></script>
+<script src="src/main/resources/static/Scripts/StartScreen.js"></script>
+<script src="src/main/resources/static/Scripts/LevelAchieved.js"></script>
+<script src="src/main/resources/static/Scripts/LevelFailed0Tries.js"></script>
+<script src="src/main/resources/static/Scripts/LevelFailedTries.js"></script>
+<script src="src/main/resources/static/Scripts/play.js"></script>
+<script src="src/main/resources/static/Scripts/menu.js"></script>
+<script src="src/main/resources/static/Scripts/main.js"></script>
 </body>
 </html>

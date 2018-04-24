@@ -1,4 +1,5 @@
 body {
+  /* Margin bottom by footer height */
   margin-bottom: 60px;
   background-color: #a9c9cf;
 }
@@ -140,7 +141,7 @@ background-color: #fff;
     height: 0;
     top:-7px;
     border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
+    border-right: 4px solid transparent;v
 }
 
 .forPoint {
@@ -186,10 +187,10 @@ border-bottom: 8px solid #b67221;
 }
 
 .tabs__content {
-  display: none;
+  display: none; /* по умолчанию прячем все блоки */
 }
 .tabs__content.active {
-  display: block;
+  display: block; /* по умолчанию показываем нужный блок */
 }
 
 .statisticWrap .progress {
@@ -301,4 +302,24 @@ border-bottom: 8px solid #b67221;
   margin-left: 27%;
   
 }
+
+.error h1 {
+  font-size: 60px;
+  color: #5a5a5a;
+}
+
+.error h2 {
+  font-size: 40px;
+  color: #5a5a5a;
+}
+
+.error p {
+  font-size: 30px;
+}
+
+.error li {
+  font-size: 20px;
+  color: #5a5a5a;
+}
+
 

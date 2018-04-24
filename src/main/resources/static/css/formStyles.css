@@ -1,5 +1,4 @@
 body {
-  /* Margin bottom by footer height */
   margin-bottom: 60px;
   background-color: #a9c9cf;
 }
@@ -141,7 +140,7 @@ background-color: #fff;
     height: 0;
     top:-7px;
     border-left: 4px solid transparent;
-    border-right: 4px solid transparent;v
+    border-right: 4px solid transparent;
 }
 
 .forPoint {
@@ -187,10 +186,10 @@ border-bottom: 8px solid #b67221;
 }
 
 .tabs__content {
-  display: none; /* по умолчанию прячем все блоки */
+  display: none;
 }
 .tabs__content.active {
-  display: block; /* по умолчанию показываем нужный блок */
+  display: block;
 }
 
 .statisticWrap .progress {

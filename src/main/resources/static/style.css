@@ -3,8 +3,6 @@ html {
   min-height: 100%;
 }
 body {
-  /* Margin bottom by footer height 
-  margin-bottom: 60px;*/
   padding-bottom: 100px;
 }
 
@@ -29,7 +27,7 @@ body {
 }
 
 .jumbotron {
-  background-image:url("../static/images/bc.png");
+  background-image:url("/images/bc.png");
   background-repeat: repeat;
   height: 500px;  
   
@@ -46,13 +44,13 @@ body {
     background-color: rgba(0,0,0, 0.6);
     color:#e9e4e4;
     font-size: 20px;
-    font-family: "Mistral" Cursive;
+    font-family: "Mistral Cursive";
     padding-left:10%;
 }
 
 
 #opac h3{
-    font: mv boli;
+
 }
 
 
@@ -97,7 +95,8 @@ width: 100%;
 background: #a9c9cf;
 color: #a9c9cf;
 font-size: 15px;
-opacity: 0.7 margin-top: -50px;
+opacity: 0.7;
+    margin-top: -50px;
 }
 
 
@@ -141,18 +140,18 @@ background-color: #fff;
 }
 
  .c {
-    border: 1px solid white; /* Рамка */
+    border: 1px solid white;
     display: inline-block;
-    padding: 5px 15px; /* Поля */
-    text-decoration: none; /* Убираем подчёркивание */
-    color: white; /* Цвет текста */
+    padding: 5px 15px;
+    text-decoration: none;
+    color: white;
     border-radius: 5px;
   }
 
    .c:hover {
-    box-shadow: 0 0 5px rgba(0,0,0,0.3); /* Тень */
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
     
-    text-decoration: none; /* Убираем подчёркивание */  
+    text-decoration: none;
     color: #5a5a5a;
    }
 

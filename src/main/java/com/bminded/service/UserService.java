@@ -1,15 +1,13 @@
 package com.bminded.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Service;
 
 import com.bminded.dao.IUserDao;
 import com.bminded.entity.UserEntity;
 
-@Repository
-@Transactional
-public class UserRepository {
+@Service
+public class UserService {
 
 	@Autowired
 	private IUserDao user_dao;

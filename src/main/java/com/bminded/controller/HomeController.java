@@ -15,15 +15,21 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class HomeController {
 
+    @GetMapping("/")
+    public ModelAndView home(){
+        ModelAndView modelAndView =new ModelAndView("index");
+        return modelAndView;
+    }
+
     @GetMapping("/login")
     public ModelAndView login() {
         ModelAndView modelAndView =new ModelAndView("login");
         return modelAndView;
     }
 
-    @GetMapping("/signIn")
-    public ModelAndView registry() {
-        ModelAndView modelAndView =new ModelAndView("signIn");
+    @GetMapping("/signup")
+    public ModelAndView register() {
+        ModelAndView modelAndView =new ModelAndView("register");
         return modelAndView;
     }
 }

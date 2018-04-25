@@ -2,27 +2,36 @@
 
 var send_register_data = function () {
     var infoForRegister = {
-        name: $("#name_register").val(),
-        surname: $("#surname_register").val(),
+        first_name: $("#name_register").val(),
+        second_name: $("#surname_register").val(),
         email: $("#email_register").val(),
-        password: $('#password_register').val()
+        password: $('#password_register').val(),
+        confirmPasword: $('#repeat_password_register').val()
     }
-        console.log(getInfoFromInputRegisterHTML());
+        console.log(infoForRegister);
         $.ajax({
-            type: 'PUT',
-            url:  '/register',
-            contentType: 'application/json; charset=utf-8',
+            type: 'POST',
+            url:  '/',
+            contentType: 'application/json',
             data: JSON.stringify(infoForRegister),
             dataType: 'json',
             async: true,
             success: function (data, textStatus, xhr) {
                 //document.location.href = "/project/bMinded/account.html";
             },
+
             error: function (xhr, textStatus, errorThrown) {
                 console.log("sdjkfhgsdf");
             }
         });
  
 }
+
+function  my()
+{
+    console.log("gkfjdk");
+}
+
+
 
 

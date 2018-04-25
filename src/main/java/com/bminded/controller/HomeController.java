@@ -5,6 +5,7 @@ import com.bminded.entity.UserEntity;
 import com.bminded.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.ui.Model;
@@ -33,22 +34,14 @@ public class HomeController {
     }
 
     @GetMapping("/register")
-    public String register(ModelAndView modelAndView ) {
-        modelAndView.addObject("userFrom",new UserDTO());
-        return "register";
+    public ModelAndView register( ) {
+        ModelAndView modelAndView = new ModelAndView("register");
+        return modelAndView;
     }
 
-    @PostMapping("/register")
-    public String register(@RequestBody UserDTO user/*, BindingResult bindingResult, ModelAndView model*/) {
-
-      /*  if (bindingResult.hasErrors()) {
-            return "registration";
-        }
-       */
+    @RequestMapping(value ="/register", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
+    public String register(@RequestBody UserDTO user) {
        System.out.println(user);
-    //    userService.addUser(convertTo(userForm));
-       // securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());
-
         return "redirect:/";
     }
 

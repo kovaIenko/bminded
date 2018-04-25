@@ -2,14 +2,14 @@ package com.bminded.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bminded.dao.ILevelDao;
 import com.bminded.entity.UserGameEntity;
 
-@Repository
-@Transactional
-public class LevelRepository {
+@Service
+public class LevelService {
 
 	@Autowired
 	private ILevelDao user_game_dao;

@@ -1,10 +1,10 @@
 var LevelAchieved =
     {
         preload: function () {
-            game.load.image('LevelAchieved', '../static/Backgrounds/LevelAchieved.png');
-            game.load.image('background', '../static/Backgrounds/orig.jpg');
-            game.load.image('Continue', '../static/Backgrounds/Contin.png');
-            game.load.image('downPanel', '../static/Backgrounds/downPanel.png');
+            game.load.image('LevelAchieved', '/Backgrounds/LevelAchieved.png');
+            game.load.image('background', '/Backgrounds/orig.jpg');
+            game.load.image('Continue', '/Backgrounds/Contin.png');
+            game.load.image('downPanel', '/Backgrounds/downPanel.png');
 
         },
         create : function () {

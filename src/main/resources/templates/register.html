@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html>
 <head>
+
 	<meta charset="utf-8">
 	<title>Реєстрація</title>
  <link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
-    
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/css/formStyles.css">
 
@@ -13,42 +14,42 @@
 <div class="nav">
       <div class="container">
           <ul class = "pull-right">
-              <li><a href="index.html">На головну</a></li>
+              <li><a href="/">На головну</a></li>
         </ul>
       </div>
     </div>
 
 	<div class="lgnForm"> 
-	 <form autocomplete="on"> 
-            <h1> Реєстрація </h1> 
-           
+	 <form:form method="POST" modelAttribute="user" autocomplete="on">
+            <h1> Реєстрація </h1>
+
             <div class="form-group">
-	    		<input class = "form-control" required="required" type="text" placeholder="Ім'я"/>
+	    		<input path="first_name" class = "form-control" required="required" type="text" placeholder="Ім'я"/>
 	  		</div>
 
 	  		 <div class="form-group">
-	    		<input class = "form-control" required="required" type="text" placeholder="Прізвище"/>
+	    		<input path="second_name"  class = "form-control" required="required" type="text" placeholder="Прізвище"/>
 	  		</div>
 	
             <div class="form-group">
-	    		<input class = "form-control" required="required" type="email" placeholder="E-mail"/>
+	    		<input path="email" class = "form-control" required="required" type="email" placeholder="E-mail"/>
 	  		</div>
            
             <div class="form-group">
-	    		<input class = "form-control" required="required" type="password" placeholder="Пароль"/>
+	    		<input  path="password" email class = "form-control" required="required" type="password" placeholder="Пароль"/>
 	  		</div>
            
            <div class="form-group">
-	    		<input class = "form-control" required="required" type="password" placeholder="Повторіть пароль"/>
+	    		<input  path="confirmPasword" class = "form-control" required="required" type="password" placeholder="Повторіть пароль"/>
 	  		</div>
             <div class="form-group">
     <p class="change_link">
 			Маєте аккаунт ? 
-			<a href = "login.html" class = "pull-right">Увійдіть</a>
+			<a href = "/login" class = "pull-right">Увійдіть</a>
 		</p>
   </div>
   <button type="submit" class="btn btn-primary btn-lg">Зареєструватись</button>
-		</form>
+		</form:form>
 	</div>
 </body>
 </html>

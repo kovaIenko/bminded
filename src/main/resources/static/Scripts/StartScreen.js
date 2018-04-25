@@ -1,8 +1,8 @@
 var StartScreen =
     {
         preload: function () {
-            game.load.image('StartScreen', '../static/Backgrounds/StartScreen.png');
-            game.load.image('BeginButton', '../static/Backgrounds/BeginButton.png');
+            game.load.image('StartScreen', '/Backgrounds/StartScreen.png');
+            game.load.image('BeginButton', '/Backgrounds/BeginButton.png');
         },
         create : function () {
             game.add.sprite(-1,-1,'StartScreen');

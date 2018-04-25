@@ -8,9 +8,9 @@ public class Statistic {
 		
 	}
 	
-	private LevelRepository level;
+	private LevelService level;
 	
-	private PointsRepository points;
+	private PointsService points;
 	
 	
 	

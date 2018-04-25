@@ -4,15 +4,15 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.bminded.dao.IGameDao;
 import com.bminded.entity.CategoryEntity;
 import com.bminded.entity.GameEntity;
 import com.bminded.entity.SubcategoryEntity;
 
-@Repository
-@Transactional()
-public class GameRepository {
+@Service
+public class GameService {
 
 	@Autowired
 	private IGameDao game_dao;

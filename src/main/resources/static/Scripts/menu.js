@@ -1,10 +1,10 @@
 var menuState =
     {
         preload: function () {
-            game.load.image('MenuImg', '../static/Backgrounds/Menu2.png');
-            game.load.image('background', '../static/Backgrounds/orig.jpg');
-            game.load.image('Continue', '../static/Backgrounds/Contin.png');
-            game.load.image('downPanel', '../static/Backgrounds/downPanel.png');
+            game.load.image('MenuImg', '/Backgrounds/Menu2.png');
+            game.load.image('background', '/Backgrounds/orig.jpg');
+            game.load.image('Continue', '/Backgrounds/Contin.png');
+            game.load.image('downPanel', '/Backgrounds/downPanel.png');
 
 // PauseMenu
 

@@ -1,10 +1,10 @@
 var LevelFailed0tries =
     {
         preload: function () {
-            game.load.image('LevelFailed0tries', '../static/Backgrounds/LevelFailed0tries.png');
-            game.load.image('background', '../static/Backgrounds/orig.jpg');
-            game.load.image('Continue', '../static/Backgrounds/Contin.png');
-            game.load.image('downPanel', '../static/Backgrounds/downPanel.png');
+            game.load.image('LevelFailed0tries', '/Backgrounds/LevelFailed0tries.png');
+            game.load.image('background', '/Backgrounds/orig.jpg');
+            game.load.image('Continue', '/Backgrounds/Contin.png');
+            game.load.image('downPanel', '/Backgrounds/downPanel.png');
 
         },
         create : function () {

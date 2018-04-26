@@ -42,7 +42,7 @@ public class HomeController {
     @RequestMapping(value ="/register", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
     public String register(@RequestBody UserDTO user) {
        System.out.println(user);
-        return "redirect:/";
+        return "redirect:/index";
     }
 
     private UserEntity convertTo(UserDTO entity)

@@ -26,7 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.jdbcAuthentication().dataSource(dataSource)
                 .passwordEncoder(passwordEncoder())
                 .usersByUsernameQuery(
-                        "select email,password, enabled from users where email = ?")
+                        "select email, password, enabled from users where email = ?")
                 .authoritiesByUsernameQuery(
                         "select email, role from user_roles where email = ?");
     }
@@ -47,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/**").authenticated()
                 .and()
                 .formLogin()
-                .loginProcessingUrl("/login")
+                .loginProcessingUrl("/login").loginPage("/login")
                // .usernameParameter("username").passwordParameter("password")
                 .and()
                 //.logout()

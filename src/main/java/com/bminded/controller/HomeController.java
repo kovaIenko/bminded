@@ -42,9 +42,16 @@ public class HomeController {
         return modelAndView;
     }
 
-    @RequestMapping(value ="/register", method = RequestMethod.POST)
+    @PostMapping("/register")
     public ResponseEntity<Void> register(@RequestBody UserDTO user) {
-       System.out.println(user);
+       //System.out.println(user);
+
+        if(userService.isEmailExist(user.getEmail()))   /* перевірити */
+            /* повертати проблему на фронтенд */
+            return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+
+        userService.addUser(convertTo(user));
+
         return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
 
@@ -52,6 +59,11 @@ public class HomeController {
     {
         UserEntity user = new UserEntity();
         user.setEmail(entity.getEmail());
+        user.setPhoto_ref(entity.getPhoto_ref());
+        user.setFirst_name(entity.getFirst_name());
+        user.setSecond_name(entity.getSecond_name());
+        user.setPassword(entity.getPassword());
+        user.setCurrency(entity.getCurrency());
         return user;
     }
 

@@ -12,9 +12,11 @@ public class UserService {
 	@Autowired
 	private IUserDao user_dao;
 
-	public void addUser(UserEntity user) {
-		user_dao.saveUser(user);
+	public UserEntity addUser(UserEntity user) {
+		 return user_dao.addUser(user);
 	}
+	public  boolean  isEmailExist(String email) {
+		return user_dao.isEmailExist(email); }
 
 	public UserEntity getById(Long id) {
 		return user_dao.getOneById(id);

@@ -21,8 +21,17 @@ public class UserDao implements IUserDao {
 	}
 
 	@Override
-	public void saveUser(UserEntity user) {
-		em.persist(user);
+	public UserEntity addUser(UserEntity user) {
+		 return em.merge(user);
+	}
+
+	@Override
+	public boolean isEmailExist(String email)
+	{
+		UserEntity user =  em.find(UserEntity.class, email);
+		if(user!=null)
+			return true;
+			          return false;
 	}
 
 	@Override

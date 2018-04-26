@@ -6,8 +6,6 @@ public class UserDTO {
     private String email;
     private String photo_ref;
 
-
-
     private String password;
     private String confirmPasword;
     private String first_name;

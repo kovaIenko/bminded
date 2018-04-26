@@ -13,31 +13,30 @@ import org.springframework.web.servlet.ModelAndView;
 public class AccountController {
 
     @Autowired
-     UserService userService;
+    UserService userService;
 
     @GetMapping(value = "/account/{id}")
     public ModelAndView cabinet(@PathVariable long id) {
-        System.out.println("helloooooooooooooooooooooooooooooooooooooooooo");
-        ModelAndView modelAndView =new ModelAndView("account");
 
+        ModelAndView modelAndView = new ModelAndView("account");
         UserEntity user = userService.getById(id);
-       modelAndView.addObject("name", user.getFirst_name());
-       modelAndView.addObject("surname", user.getSecond_name());
-       modelAndView.addObject("email", user.getEmail());
-       // modelAndView.addObject("photo", user.getEmail());
+        modelAndView.addObject("first_name", user.getFirst_name());
+        modelAndView.addObject("second_name", user.getSecond_name());
+        modelAndView.addObject("email", user.getEmail());
+
+        if (user.getPhoto_ref() == "")
+            modelAndView.addObject("src", "/images/default-avatar.png");
+        else
+            modelAndView.addObject("src", user.getPhoto_ref());
+
         return modelAndView;
     }
 
     @GetMapping("/statistic")
-    public ModelAndView statistic()
-    {
+    public ModelAndView statistic() {
         ModelAndView modelAndView = new ModelAndView("statistic");
         return modelAndView;
     }
-
-
-
-
 
 
 }

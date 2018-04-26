@@ -4,6 +4,7 @@ import com.bminded.dto.UserDTO;
 import com.bminded.entity.UserEntity;
 import com.bminded.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.servlet.view.RedirectView;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @Controller
 public class HomeController {
@@ -39,10 +42,10 @@ public class HomeController {
         return modelAndView;
     }
 
-    @RequestMapping(value ="/register", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
-    public String register(@RequestBody UserDTO user) {
+    @RequestMapping(value ="/register", method = RequestMethod.POST)
+    public ResponseEntity<Void> register(@RequestBody UserDTO user) {
        System.out.println(user);
-        return "redirect:/index";
+        return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
 
     private UserEntity convertTo(UserDTO entity)

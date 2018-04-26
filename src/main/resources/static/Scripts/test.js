@@ -10,24 +10,24 @@ var send_register_data = function () {
         confirmPasword: $('#repeat_password_register').val()
     }
 
-        console.log(infoForRegister);
+    console.log(infoForRegister);
 
-            $.ajax({
-            type: 'POST',
-            url:  '/register',
-                contentType : 'application/json; charset=utf-8',
-            data: JSON.stringify(infoForRegister),
-            dataType: 'json',
-            async: true,
+    $.ajax({
+        type: 'POST',
+        url: '/register',
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(infoForRegister),
+        dataType: 'json',
+        async: true,
 
-            success: function (data, textStatus, xhr) {
-                console.log("Success");
-            },
-
-            error: function (xhr, textStatus, errorThrown) {
-                 console.log("Error");
-            }
-        });
+        success: function (result) {
+            window.location.replace("/");
+        }
+        ,
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(jqXHR.status + ' ' + jqXHR.responseText);
+        }
+    });
 
 }
 

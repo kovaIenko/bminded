@@ -28,10 +28,10 @@ public class UserDao implements IUserDao {
 	@Override
 	public boolean isEmailExist(String email)
 	{
-		UserEntity user =  em.find(UserEntity.class, email);
-		if(user!=null)
-			return true;
-			          return false;
+//		UserEntity user =  em.find(UserEntity.class, email);
+//		if(user!=null)
+//			return true;
+		return false;
 	}
 
 	@Override

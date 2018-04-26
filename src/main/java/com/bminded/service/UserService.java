@@ -13,7 +13,8 @@ public class UserService {
 	private IUserDao user_dao;
 
 	public UserEntity addUser(UserEntity user) {
-		 return user_dao.addUser(user);
+
+		return user_dao.addUser(user);
 	}
 	public  boolean  isEmailExist(String email) {
 		return user_dao.isEmailExist(email); }

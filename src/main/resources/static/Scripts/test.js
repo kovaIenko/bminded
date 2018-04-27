@@ -1,39 +1,42 @@
 //Register.html request of register form (name,surname,email,password,repeat_password)
 
-//Register.html request of register form (name,surname,email,password,repeat_password)
 var send_register_data = function () {
-    if (checkRegisterFormData() == true) {
 
-        var infoForRegister = {
-            'name': $("#name_register").val(),
-            'surname': $("#surname_register").val(),
-            'email': $("#email_register").val(),
-            'password': $('#password_register').val()
-        }
-        console.log(infoForRegister);
-        $.ajax({
-            type: 'POST',
-            url: 'register.html',
-            data: JSON.stringify(infoForRegister),
-            async: true,
-            success: function (result) {
-                alert('At ' + result.time
-                    + ': ' + result.message);
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                var name = ("invalid email");
-                var el = document.getElementById('invalid_email');
-                if (typeof el.innerText !== 'undefined') {
-                    // IE8-
-                    el.innerText = name;
-                } else {
-                    // Нормальные браузеры
-                    el.textContent = name;
-                }
-            }
-        });
+    var infoForRegister = {
+        first_name: $("#name_register").val(),
+        second_name: $("#surname_register").val(),
+        email: $("#email_register").val(),
+        password: $('#password_register').val(),
+        confirmPasword: $('#repeat_password_register').val()
     }
+
+    console.log(infoForRegister);
+
+    $.ajax({
+        type: 'POST',
+        url: '/register',
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(infoForRegister),
+        dataType: 'json',
+        async: true,
+
+        success: function (result) {
+            window.location.replace("/");
+        }
+        ,
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(jqXHR.status + ' ' + jqXHR.responseText);
+        }
+    });
+
+
+
+
+
+
+
 }
+
 function checkImage() {
     console.log($('#file').val().length);
     if ($('#file').val().length == '') {

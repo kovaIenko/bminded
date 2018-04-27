@@ -59,7 +59,7 @@ public class AccountController {
                                          RedirectAttributes redirectAttributes) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
-        String filePath = request.getServletContext().getRealPath("/");
+        String filePath = ("profile_image/");
         System.out.println(filePath);
         if (file.isEmpty()) {
             System.out.print("error");

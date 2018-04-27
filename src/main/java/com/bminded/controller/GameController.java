@@ -2,9 +2,11 @@ package com.bminded.controller;
 
 import com.bminded.dto.UserDTO;
 import com.bminded.entity.GameEntity;
+import com.bminded.entity.SubcategoryEntity;
 import com.bminded.entity.UserEntity;
 import com.bminded.service.GameService;
 import com.bminded.service.LevelService;
+import com.bminded.service.PointsService;
 import com.bminded.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,6 +30,9 @@ public class GameController {
     @Autowired
     LevelService levelService;
 
+    @Autowired
+    PointsService pointsService;
+
     @GetMapping("/{game_name}")
     public ModelAndView game(@PathVariable String  game_name) {
 
@@ -49,23 +54,20 @@ public class GameController {
         return modelAndView;
     }
 
-    @PostMapping("/firefly")
-    public ResponseEntity<Void> updateFireFly(@RequestParam("changeLevel") int changeLevel, @RequestParam("points") int points) {
-        System.out.println(changeLevel);
-        System.out.println(points);
+    @PostMapping("/firefly") /* play*/
+    public ResponseEntity<Void> updateFireFly(@RequestParam("level_up") int level_up, @RequestParam("points_forGame") int points_forGame) {
+        System.out.println(level_up);
+        System.out.println(points_forGame);
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName(); /* email */
         UserEntity user = userService.getOneByEmail(email);
-
         GameEntity game = gameService.getOneByName("FIREFLY");
+        SubcategoryEntity subcategoryEntity = pointsService.getOneByName("Volume memory");
 
-
-        levelService.updateLevel(user.getId(),game.getId(),changeLevel);
-
+        pointsService.update(user.getId(),subcategoryEntity.getId(), points_forGame);
+        levelService.updateLevel(user.getId(),game.getId(),level_up);
         return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
-
-
 
 }

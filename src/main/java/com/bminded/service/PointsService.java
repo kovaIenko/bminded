@@ -2,6 +2,7 @@ package com.bminded.service;
 
 import java.util.List;
 
+import com.bminded.entity.SubcategoryEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,10 @@ public class PointsService {
 
 	public UserSubcategoryEntity update(Long user, Long subcategory, int points) {
 		return points_dao.updatePoints(user, subcategory, points);
+	}
+
+	public SubcategoryEntity getOneByName(String category){
+		return points_dao.getOneByName(category);
 	}
 
 	public List<UserSubcategoryEntity> getAllPointsBuUser(UserEntity user) {

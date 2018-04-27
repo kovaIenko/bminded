@@ -161,9 +161,10 @@
             level_up: level,
             points_forGame: gamepO()
         }
+        console.log();
         $.ajax({
             type: 'POST',
-            url: 'game/firefly',
+            url: '/game/firefly',
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(level_data),
             async: true,

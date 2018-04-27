@@ -63,9 +63,9 @@ public class GameController {
         String email = authentication.getName(); /* email */
         UserEntity user = userService.getOneByEmail(email);
         GameEntity game = gameService.getOneByName("FIREFLY");
-        SubcategoryEntity subcategoryEntity = pointsService.getOneByName("Volume memory");
+       // SubcategoryEntity subcategoryEntity = pointsService.getOneByName("Volume memory");
 
-        pointsService.update(user.getId(),subcategoryEntity.getId(), points_forGame);
+      //  pointsService.update(user.getId(),subcategoryEntity.getId(), points_forGame);
         levelService.updateLevel(user.getId(),game.getId(),level_up);
         return new ResponseEntity<Void>(HttpStatus.CREATED);
     }

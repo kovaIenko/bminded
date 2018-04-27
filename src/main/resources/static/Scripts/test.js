@@ -25,7 +25,15 @@ var send_register_data = function () {
         }
         ,
         error: function (jqXHR, textStatus, errorThrown) {
-            alert(jqXHR.status + ' ' + jqXHR.responseText);
+            var name = ("This email already exists");
+            var el = document.getElementById('invalid_email');
+            if (typeof el.innerText !== 'undefined') {
+                // IE8-
+                el.innerText = name;
+            } else {
+                // Нормальные браузеры
+                el.textContent = name;
+            }
         }
     });
 

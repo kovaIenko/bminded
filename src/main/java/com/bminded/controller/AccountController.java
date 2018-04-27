@@ -18,9 +18,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 @Controller
 public class AccountController {
@@ -80,6 +77,19 @@ public class AccountController {
 
         return new RedirectView("/account");
     }
+
+    @PostMapping("/change_name")
+    public RedirectView changeName(@RequestParam("name") String name,
+                                   @RequestParam("surname") String surname) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = authentication.getName();
+        UserEntity userEntity = userService.getOneByEmail(email);
+        userEntity.setFirst_name(name);
+        userEntity.setSecond_name(surname);
+        userService.updateUser(userEntity);
+        return new RedirectView("/account");
+    }
+
 
 
 }

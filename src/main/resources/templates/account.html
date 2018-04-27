@@ -21,7 +21,7 @@
             <li><a href="/statistic">Статистика</a></li>
         </ul>
         <ul class="pull-right">
-            <li><a href="/">Вихід</a></li>
+            <li><a href="/logout">Вихід</a></li>
         </ul>
     </div>
 </div>
@@ -66,52 +66,20 @@
     </diV>
 
 
-    <form>
+    <form action="/change_name" method="post">
         <div class="form-group">
             <label>Змінити ім'я та прізвище:</label>
-            <input id="new_name_account" type="text" class="form-control" required="required" placeholder="Нове ім'я">
+            <input name="name" id="new_name_account" type="text" class="form-control" required="required" placeholder="Нове ім'я">
         </div>
         <div class="form-group">
-            <input id="new_surname_account" type="text" class="form-control" required="required"
+            <input name="surname" id="new_surname_account" type="text" class="form-control" required="required"
                    placeholder="Нове прізвище">
         </div>
-        <button id="new_name_surname_submit_button_account" onclick="send_new_name_data()" class="btn btn-primary">
+        <button id="new_name_surname_submit_button_account" type="submit" class="btn btn-primary">
             Внести зміни
         </button>
     </form>
 
-    <form>
-        <div class="form-group">
-            <label>Змінити e-mail:</label>
-            <input id="new_email_account" type="email" class="form-control" required="required"
-                   placeholder="Новий e-mail">
-        </div>
-
-        <button id="new_email_submit_button_account" onclick="send_new_email_data()" class="btn btn-primary">Внести
-            зміни
-        </button>
-    </form>
-
-    <form>
-        <div class="form-group">
-            <label>Змінити пароль:</label>
-            <input id="old_password_account" type="password" minlength="8" class="form-control" required="required"
-                   placeholder="Введіть старий пароль">
-        </div>
-
-        <div class="form-group">
-            <input id="new_password_account" type="password" minlength="8" class="form-control" required="required"
-                   placeholder="Введіть новий пароль">
-        </div>
-
-        <div class="form-group">
-            <input id="repeat_new_password_account" type="password" minlength="8" class="form-control" required="required"
-                   placeholder="Повторіть пароль">
-        </div>
-        <button id="new_password_submit_button_account" onclick="send_new_password_data()" class="btn btn-primary  ">
-            Внести зміни
-        </button>
-    </form>
 
 </div>
 </div>

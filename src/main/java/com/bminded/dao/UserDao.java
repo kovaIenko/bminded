@@ -9,6 +9,8 @@ import com.bminded.entity.UserEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Repository
 @Transactional
 public class UserDao implements IUserDao {
@@ -32,19 +34,19 @@ public class UserDao implements IUserDao {
 
 
         String hql = "from UserEntity as u where u.email = ?";
-        UserEntity user = (UserEntity) em.createQuery(hql).setParameter(1, email).getSingleResult();
+        List<UserEntity>  users =  em.createQuery(hql).setParameter(1, email).getResultList();
 
-        if (user!=null)
+        if (users.size()!=0)
             return true;
         return false;
     }
 
     @Override
     public void addUserRole(String email, String role) {
-        String query = "insert into user_roles values(email, role)";
+        String query = "insert into user_roles values(?,?,?)";
 
         em.createNativeQuery(query)
-                .setParameter(email, role)
+                .setParameter(1, null).setParameter(2,email).setParameter(3,role)
                 .executeUpdate();
     }
 

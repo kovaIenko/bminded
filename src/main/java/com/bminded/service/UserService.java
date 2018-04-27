@@ -20,11 +20,14 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(pass));
         return user_dao.addUser(user);
     }
+    public UserEntity getOneByEmail(String email)
+    {
+        return user_dao.getOneByEmail(email);
+    }
 
     public void addUserRole(String email, String role) {
         user_dao.addUserRole(email, role);
     }
-
 
     public boolean isEmailExist(String email) {
         return user_dao.isEmailExist(email);

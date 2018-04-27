@@ -13,6 +13,8 @@ public interface IUserDao {
 
 	UserEntity getOneById(Long id);
 
+	UserEntity getOneByEmail(String email);
+
 	void changePassword(Long id, String old_pass, String new_pass);
 
 	void setPhoto(Long id, String reference);

@@ -57,8 +57,6 @@ public class HomeController {
         return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
 
-
-
     @GetMapping("/403")
     public ModelAndView forbidden() {
         ModelAndView modelAndView=new ModelAndView("403");

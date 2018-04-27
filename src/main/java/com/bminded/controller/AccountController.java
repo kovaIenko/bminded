@@ -15,6 +15,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -59,21 +61,19 @@ public class AccountController {
                                          RedirectAttributes redirectAttributes) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
-        String filePath = ("profile_image/");
-        System.out.println(filePath);
         if (file.isEmpty()) {
             System.out.print("error");
         }
 
         try {
-            byte[] bytes = file.getBytes();
-            Path path = Paths.get(filePath + file.getOriginalFilename());
-            Files.write(path, bytes);
-            //href to save
-            userService.setPhoto(email,filePath + file.getOriginalFilename());
-            System.out.println(filePath + file.getOriginalFilename());
+            String imgName = file.getOriginalFilename();
 
-
+            File upl = new File("src/main/resources/static/profile_image/"+imgName);
+            upl.createNewFile();
+            FileOutputStream fout = new FileOutputStream(upl);
+            fout.write(file.getBytes());
+            fout.close();
+            userService.setPhoto(email,"/profile_image/"+imgName);
         } catch (IOException e) {
             e.printStackTrace();
         }

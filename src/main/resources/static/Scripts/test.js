@@ -1,102 +1,39 @@
 //Register.html request of register form (name,surname,email,password,repeat_password)
 
+//Register.html request of register form (name,surname,email,password,repeat_password)
 var send_register_data = function () {
+    if (checkRegisterFormData() == true) {
 
-    var infoForRegister = {
-        first_name: $("#name_register").val(),
-        second_name: $("#surname_register").val(),
-        email: $("#email_register").val(),
-        password: $('#password_register').val(),
-        confirmPasword: $('#repeat_password_register').val()
-    }
-
-    console.log(infoForRegister);
-
-    $.ajax({
-        type: 'POST',
-        url: '/register',
-        contentType: 'application/json; charset=utf-8',
-        data: JSON.stringify(infoForRegister),
-        dataType: 'json',
-        async: true,
-
-        success: function (result) {
-            window.location.replace("/");
+        var infoForRegister = {
+            'name': $("#name_register").val(),
+            'surname': $("#surname_register").val(),
+            'email': $("#email_register").val(),
+            'password': $('#password_register').val()
         }
-        ,
-        error: function (jqXHR, textStatus, errorThrown) {
-            alert(jqXHR.status + ' ' + jqXHR.responseText);
-        }
-    });
-
-
-    var send_new_name_data = function () {
-        var change_name_surname = {
-            new_name: $("#new_name_account").val(),
-            new_surname: $('#new_surname_account').val()
-        }
+        console.log(infoForRegister);
         $.ajax({
             type: 'POST',
-            url: '/account',
-            contentType: 'application/json; charset=utf-8',
-            data: JSON.stringify(change_name_surname),
+            url: 'register.html',
+            data: JSON.stringify(infoForRegister),
             async: true,
-
-            success: function (data, textStatus, xhr) {
-                console.log("Success");
+            success: function (result) {
+                alert('At ' + result.time
+                    + ': ' + result.message);
             },
-
-            error: function (xhr, textStatus, errorThrown) {
-                console.log("Error");
+            error: function (jqXHR, textStatus, errorThrown) {
+                var name = ("invalid email");
+                var el = document.getElementById('invalid_email');
+                if (typeof el.innerText !== 'undefined') {
+                    // IE8-
+                    el.innerText = name;
+                } else {
+                    // Нормальные браузеры
+                    el.textContent = name;
+                }
             }
         });
     }
-
-    var send_new_email_data = function () {
-        var change_email_data = {
-            new_email: $("#new_email_account").val(),
-        }
-        $.ajax({
-            type: 'POST',
-            url: '/account',
-            contentType: 'application/json; charset=utf-8',
-            data: JSON.stringify(change_email_data),
-            async: true,
-
-            success: function (data, textStatus, xhr) {
-                console.log("Success" + JSON.stringify(change_email_data));
-
-            },
-
-            error: function (xhr, textStatus, errorThrown) {
-                console.log("Error");
-            }
-        });
-    }
-    var send_new_password_data = function () {
-        var change_password_data = {
-            old_password: $("#old_password_account").val(),
-            new_password: $("#new_password_account").val()
-        }
-        $.ajax({
-            type: 'POST',
-            url: '/account',
-            contentType: 'application/json; charset=utf-8',
-            data: JSON.stringify(change_password_data),
-            async: true,
-
-            success: function (data, textStatus, xhr) {
-                console.log("Success" + JSON.stringify(change_password_data));
-            },
-
-            error: function (xhr, textStatus, errorThrown) {
-                console.log("Error");
-            }
-        });
-    }
-
 }
-
 function checkImage() {
     console.log($('#file').val().length);
     if ($('#file').val().length == '') {
@@ -114,6 +51,24 @@ function checkImage() {
     return true;
 }
 
+function checkRegisterFormData() {
+    if ($("#password_register").val() == $("#repeat_password_register").val() && $("#password_register").val() != "" && $("#repeat_password_register").val() != ""
+        && $("#name_register").val() != "" && $("#surname_register").val() != "" && $("#email_register").val() != "") {
+        return true;
+    } else {
 
+        var name = ("mismatched passwords");
+        var el = document.getElementById('mismatched_passwords');
+        if (typeof el.innerText !== 'undefined') {
+            // IE8-
+            el.innerText = name;
+        } else {
+            // Нормальные браузеры
+            el.textContent = name;
+        }
+        return false;
+    }
+    return false;
+}
 
 

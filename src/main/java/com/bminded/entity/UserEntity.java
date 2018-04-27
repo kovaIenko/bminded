@@ -9,10 +9,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
-//@NamedQuery(name = UserEntity.isEmailExist, query = "select u.email from users as u where u.email= :email")
 public class UserEntity {
-
-	//public static final String isEmailExist = "isEmailExist";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,6 +24,16 @@ public class UserEntity {
 	private String second_name;
 
 	private int currency;
+
+	private boolean enabled;
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
 
 	@OneToMany(mappedBy = "user")
 	private Set<UserGameEntity> games;

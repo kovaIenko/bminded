@@ -12,9 +12,14 @@ import org.springframework.web.servlet.ModelAndView;
 public class GameController {
 
     @GetMapping("/{game_name}")
-    @ResponseBody
     public ModelAndView game(@PathVariable String  game_name) {
         ModelAndView modelAndView =new ModelAndView(game_name);
+        return modelAndView;
+    }
+
+    @GetMapping("/")
+    public ModelAndView games() {
+        ModelAndView modelAndView =new ModelAndView("game");
         return modelAndView;
     }
 }

@@ -19,4 +19,7 @@ public interface IUserDao {
 
 	boolean isEmailExist(String email);
 
+	void addUserRole(String email, String role);
+
+
 }

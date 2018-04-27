@@ -48,11 +48,26 @@ public class HomeController {
 
         if(userService.isEmailExist(user.getEmail()))   /* перевірити */
             /* повертати проблему на фронтенд */
-            return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+          //  System.out.println("The is email");
 
         userService.addUser(convertTo(user));
+        userService.addUserRole(user.getEmail(),"ROLE_USER");
 
         return new ResponseEntity<Void>(HttpStatus.CREATED);
+    }
+
+
+
+    @GetMapping("/403")
+    public ModelAndView forbidden() {
+        ModelAndView modelAndView=new ModelAndView("403");
+        return modelAndView;
+    }
+    @GetMapping("/error")
+    public ModelAndView error() {
+        ModelAndView modelAndView=new ModelAndView("error");
+        return modelAndView;
     }
 
     private UserEntity convertTo(UserDTO entity)

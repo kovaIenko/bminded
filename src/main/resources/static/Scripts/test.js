@@ -31,14 +31,14 @@ var send_register_data = function () {
 
 
     var send_new_name_data = function () {
-        var  change_name_surname = {
+        var change_name_surname = {
             new_name: $("#new_name_account").val(),
             new_surname: $('#new_surname_account').val()
         }
         $.ajax({
             type: 'POST',
-            url:  '/account',
-            contentType : 'application/json; charset=utf-8',
+            url: '/account',
+            contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(change_name_surname),
             async: true,
 
@@ -53,18 +53,18 @@ var send_register_data = function () {
     }
 
     var send_new_email_data = function () {
-        var  change_email_data = {
+        var change_email_data = {
             new_email: $("#new_email_account").val(),
         }
         $.ajax({
             type: 'POST',
-            url:  '/account',
-            contentType : 'application/json; charset=utf-8',
+            url: '/account',
+            contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(change_email_data),
             async: true,
 
             success: function (data, textStatus, xhr) {
-                console.log("Success" +  JSON.stringify(change_email_data));
+                console.log("Success" + JSON.stringify(change_email_data));
 
             },
 
@@ -74,14 +74,14 @@ var send_register_data = function () {
         });
     }
     var send_new_password_data = function () {
-        var  change_password_data = {
+        var change_password_data = {
             old_password: $("#old_password_account").val(),
             new_password: $("#new_password_account").val()
         }
         $.ajax({
             type: 'POST',
-            url:  '/account',
-            contentType : 'application/json; charset=utf-8',
+            url: '/account',
+            contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(change_password_data),
             async: true,
 
@@ -95,6 +95,23 @@ var send_register_data = function () {
         });
     }
 
+}
+
+function checkImage() {
+    console.log($('#file').val().length);
+    if ($('#file').val().length == '') {
+        var name = ("incorrect image");
+        var el = document.getElementById('incorrect_image');
+        if (typeof el.innerText !== 'undefined') {
+            // IE8-
+            el.innerText = name;
+        } else {
+            // Нормальные браузеры
+            el.textContent = name;
+        }
+        return false;
+    }
+    return true;
 }
 
 

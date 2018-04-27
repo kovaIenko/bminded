@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -34,7 +36,16 @@ public class HomeController {
 
     @GetMapping("/")     /* index.html  */
     public ModelAndView home(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String name = authentication.getName();
+        boolean isAuth=true;
+        if(name.equals("anonymousUser")){
+            isAuth=false;
+        }
+
         ModelAndView modelAndView =new ModelAndView("index");
+        modelAndView.addObject("value",isAuth);
+        modelAndView.addObject("hid","hidden");
         return modelAndView;
     }
 

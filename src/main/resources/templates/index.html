@@ -27,11 +27,11 @@
             <!--hidden шоб приховати-->
         </ul>
         <ul class="pull-right">
-            <div {{#value}} {{hid}} {{/value}}
+            <div {{^value}} {{hid}} {{/value}}
 
                 <li><a href="/login">Вихід</a></li>
             </div>
-            <div {{^value}}{{hid}} {{/value}}>
+            <div {{#value}}{{hid}} {{/value}}>
                 <li><a href="/login">Вхід</a></li>
                 <li><a href="/register">Реєстрація</a></li>
             </div>
@@ -43,7 +43,7 @@
     <div class="container" id="opac">
         <h1>Ласкаво просимо</h1>
         <p>Вас вітає онлайн-сервіс “bminded”</p>
-        <div class="pull-left">
+        <div  {{#value}}{{hid}} {{/value}} class="pull-left">
 
             <a href="/register" class="c" style="color: white">Реєстрація</a>
         </div>

@@ -17,11 +17,10 @@ public interface IUserDao {
 
 	void changePassword(Long id, String old_pass, String new_pass);
 
-	void setPhoto(Long id, String reference);
-
 	boolean isEmailExist(String email);
 
 	void addUserRole(String email, String role);
 
 
+    void setPhoto(String name, String reference);
 }

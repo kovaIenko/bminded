@@ -31,6 +31,10 @@ public class UserDao implements IUserDao {
         return em.merge(user);
     }
 
+    public void updatePhoto(String path,String email){
+
+    }
+
     @Override
     public boolean isEmailExist(String email) {
 
@@ -77,10 +81,10 @@ public class UserDao implements IUserDao {
     }
 
     @Override
-    public void setPhoto(Long id, String reference) {
-        UserEntity temp = (UserEntity) this.getOneById(id);
+    public void setPhoto(String name, String reference) {
+        UserEntity temp = (UserEntity) this.getOneByEmail(name);
         temp.setPhoto_ref(reference);
-        em.persist(temp);
+        em.merge(temp);
     }
 
 }

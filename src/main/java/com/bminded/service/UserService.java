@@ -41,4 +41,8 @@ public class UserService {
     public void updateUser(UserEntity user) {
         user_dao.updateUser(user);
     }
+
+    public void setPhoto(String name, String reference) {
+        user_dao.setPhoto(name,reference);
+    }
 }

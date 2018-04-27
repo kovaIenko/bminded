@@ -57,7 +57,10 @@ public class AccountController {
     @PostMapping("/upload")
     public RedirectView singleFileUpload(@RequestParam("file") MultipartFile file,
                                          RedirectAttributes redirectAttributes) {
-        String filePath = request.getServletContext().getRealPath("/ ");
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = authentication.getName();
+        String filePath = request.getServletContext().getRealPath("/");
+        System.out.println(filePath);
         if (file.isEmpty()) {
             System.out.print("error");
         }
@@ -67,6 +70,7 @@ public class AccountController {
             Path path = Paths.get(filePath + file.getOriginalFilename());
             Files.write(path, bytes);
             //href to save
+            userService.setPhoto(email,filePath + file.getOriginalFilename());
             System.out.println(filePath + file.getOriginalFilename());
 
 

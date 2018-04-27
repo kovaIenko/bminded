@@ -18,6 +18,7 @@ public class UserService {
     public UserEntity addUser(UserEntity user) {
         String pass = user.getPassword();
         user.setPassword(passwordEncoder.encode(pass));
+        user.setEnabled(true);
         return user_dao.addUser(user);
     }
     public UserEntity getOneByEmail(String email)

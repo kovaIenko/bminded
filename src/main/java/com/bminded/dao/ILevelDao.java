@@ -8,4 +8,6 @@ public interface ILevelDao {
 	
 	UserGameEntity updateLevel(Long user_id, Long game_id, int level);
 
+	int getLevel(Long user, Long game);
+
 }

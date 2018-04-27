@@ -36,6 +36,7 @@ public class AccountController {
     return modelAndView;
 
     }
+
     @GetMapping("/statistic")
     public ModelAndView statistic() {
         ModelAndView modelAndView = new ModelAndView("statistic");

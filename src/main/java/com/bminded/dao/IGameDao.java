@@ -20,6 +20,8 @@ public interface IGameDao {
 
 	GameEntity getOneById(Long id);
 
+	GameEntity getOneByName(String game);
+
 	SubcategoryEntity getSubcategoryById(Long id);
 
 	CategoryEntity getCategoryById(Long id);

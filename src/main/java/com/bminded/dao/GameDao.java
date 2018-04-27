@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import com.bminded.entity.UserEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +17,8 @@ import com.bminded.entity.SubcategoryEntity;
 @Repository
 @Transactional
 public class GameDao implements IGameDao {
+
+	String findByName = "from GameEntity as g where g.name= ?";
 
 	@PersistenceContext
 	private EntityManager em;
@@ -29,6 +32,15 @@ public class GameDao implements IGameDao {
 	public GameEntity deleteGame(GameEntity game) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	@Override
+	public GameEntity getOneByName(String game)
+	{
+		GameEntity game_entity = (GameEntity) em.createQuery(findByName).setParameter(1, game).getSingleResult();
+
+		return game_entity;
 	}
 
 	@Override

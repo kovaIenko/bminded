@@ -35,8 +35,8 @@ public class GameEntity {
 	@Column(unique = true, nullable = false)
 	private Long id;
 
-	@Enumerated(EnumType.STRING)
-	private TypeGame name;
+
+	private String name;
 
 	@OneToMany(mappedBy = "game")
 	private List<UserGameEntity> users;
@@ -45,7 +45,7 @@ public class GameEntity {
 	@JoinColumn(name = "subcategory_id", nullable = false)
 	private SubcategoryEntity subcategory;
 
-	public GameEntity(TypeGame name) {
+	public GameEntity(String name) {
 		this.name = name;
 		users = new ArrayList<UserGameEntity>();
 	}
@@ -61,11 +61,11 @@ public class GameEntity {
 		this.id = id;
 	}
 
-	public TypeGame getName() {
+	public String getName() {
 		return name;
 	}
 
-	public void setName(TypeGame name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 

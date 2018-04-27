@@ -1,7 +1,9 @@
 package com.bminded.controller;
 
 import com.bminded.dto.UserDTO;
-import com.bminded.entity.UserEntity;
+import com.bminded.entity.*;
+import com.bminded.service.GameService;
+import com.bminded.service.LevelService;
 import com.bminded.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -23,6 +25,12 @@ public class HomeController {
 
      @Autowired
      UserService userService;
+
+    @Autowired
+    LevelService levelService;
+
+    @Autowired
+    GameService gameService;
 
     @GetMapping("/")     /* index.html  */
     public ModelAndView home(){
@@ -50,9 +58,20 @@ public class HomeController {
             /* повертати проблему на фронтенд */
             return new ResponseEntity<Void>(HttpStatus.CONFLICT);
           //  System.out.println("The is email");
+        UserEntity entity =  userService.addUser(convertTo(user));
 
-        userService.addUser(convertTo(user));
+        /* adding one game */
+        GameEntity firefly = gameService.getOneByName("FIREFLY");
+        UserGameEntity user_game =  new UserGameEntity();
+        user_game.setId(new UserGameID(entity.getId(), firefly.getId()));
+        levelService.addLevel(user_game);
+
+
         userService.addUserRole(user.getEmail(),"ROLE_USER");
+
+
+        /* adding games*/
+       // levelService.addLevel(new UserGameEntity());
 
         return new ResponseEntity<Void>(HttpStatus.CREATED);
     }

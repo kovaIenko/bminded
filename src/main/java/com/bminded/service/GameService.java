@@ -29,6 +29,11 @@ public class GameService {
 		game_dao.insertCategory(subcategory);
 		return subcategory;
 	}
+	public GameEntity getOneByName(String game)
+	{
+		return game_dao.getOneByName(game);
+	}
+
 
 	public GameEntity updateGame(final GameEntity game) {
 		return game_dao.update(game);

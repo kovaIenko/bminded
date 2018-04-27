@@ -1,10 +1,10 @@
 var LevelFailed0tries =
     {
         preload: function () {
-            game.load.image('LevelFailed0tries', '/Backgrounds/LevelFailed0tries.png');
-            game.load.image('background', '/Backgrounds/orig.jpg');
-            game.load.image('Continue', '/Backgrounds/Contin.png');
-            game.load.image('downPanel', '/Backgrounds/downPanel.png');
+            game.load.image('LevelFailed0tries', 'Backgrounds/LevelFailed0tries.png');
+            game.load.image('background', 'Backgrounds/orig.jpg');
+            game.load.image('Continue', 'Backgrounds/Contin.png');
+            game.load.image('downPanel', 'Backgrounds/downPanel.png');
 
         },
         create : function () {
@@ -28,4 +28,23 @@ function actionOnClick1 () {
         level -= 1;
 
     }
+    var  level_data = {
+        level: level,
+        points_forGame:gamepO()
+    }
+    $.ajax({
+        type: 'POST',
+        url:  'game/firefly',
+        contentType : 'application/json; charset=utf-8',
+        data: JSON.stringify(level_data),
+        async: true,
+
+        success: function (data, textStatus, xhr) {
+            console.log("Success" + JSON.stringify(level_data));
+        },
+
+        error: function (xhr, textStatus, errorThrown) {
+            console.log("Error");
+        }
+    });
 }

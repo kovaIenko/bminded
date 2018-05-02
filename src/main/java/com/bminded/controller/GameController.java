@@ -1,6 +1,5 @@
 package com.bminded.controller;
 
-import com.bminded.dto.GameData;
 import com.bminded.dto.UserDTO;
 import com.bminded.entity.GameEntity;
 import com.bminded.entity.SubcategoryEntity;
@@ -44,11 +43,8 @@ public class GameController {
         UserEntity user = userService.getOneByEmail(email);
 
         GameEntity game = gameService.getOneByName(game_name.toUpperCase().trim());
-        SubcategoryEntity subcategoryEntity = pointsService.getOneByName("Volume memory");
-       // System.out.println("======================================  "  + pointsService.getPoints(user.getId(),subcategoryEntity.getId()) );
 
         modelAndView.addObject("level",levelService.getlevel(user.getId(),game.getId()));
-       modelAndView.addObject("points",pointsService.getPoints(user.getId(),subcategoryEntity.getId()));
         return modelAndView;
     }
 
@@ -58,18 +54,19 @@ public class GameController {
         return modelAndView;
     }
 
-
     @PostMapping("/firefly") /* play*/
-    public ResponseEntity<Void> updateFireFly(@RequestBody GameData game_date) {
+    public ResponseEntity<Void> updateFireFly(@RequestParam("level_up") int level_up, @RequestParam("points_forGame") int points_forGame) {
+        System.out.println(level_up);
+        System.out.println(points_forGame);
+
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName(); /* email */
         UserEntity user = userService.getOneByEmail(email);
         GameEntity game = gameService.getOneByName("FIREFLY");
-        //SubcategoryEntity subcategoryEntity = pointsService.getOneByName("Volume memory");
+        SubcategoryEntity subcategoryEntity = pointsService.getOneByName("Volume memory");
 
-    //    pointsService.update(user.getId(),subcategoryEntity.getId(), game_date.getPoints_forGame());
-        levelService.updateLevel(user.getId(),game.getId(),game_date.getLevel_up());
-
+        pointsService.update(user.getId(),subcategoryEntity.getId(), points_forGame);
+        levelService.updateLevel(user.getId(),game.getId(),level_up);
         return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
 

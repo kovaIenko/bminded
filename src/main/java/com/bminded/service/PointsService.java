@@ -26,13 +26,11 @@ public class PointsService {
 		return points_dao.updatePoints(user, subcategory, points);
 	}
 
-	public int getPoints(Long user, Long subcategory)
-	{
-		return points_dao.getPoints(user, subcategory);
-	}
-
 	public SubcategoryEntity getOneByName(String category){
 		return points_dao.getOneByName(category);
 	}
 
+	public List<UserSubcategoryEntity> getAllPointsBuUser(UserEntity user) {
+		return points_dao.getAllPointsByUser(user);
+	}
 }

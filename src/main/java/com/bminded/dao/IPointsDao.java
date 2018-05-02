@@ -12,9 +12,9 @@ public interface IPointsDao {
 	void savePoints(UserSubcategoryEntity points);
 
 	UserSubcategoryEntity updatePoints(Long user, Long subcategory, int points);
+	
+	List<UserSubcategoryEntity> getAllPointsByUser(UserEntity user);
 
 	SubcategoryEntity  getOneByName(String category);
-
-	int getPoints(Long user, Long subcategory);
 
 }

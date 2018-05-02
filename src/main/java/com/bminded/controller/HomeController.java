@@ -4,6 +4,7 @@ import com.bminded.dto.UserDTO;
 import com.bminded.entity.*;
 import com.bminded.service.GameService;
 import com.bminded.service.LevelService;
+import com.bminded.service.PointsService;
 import com.bminded.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -27,6 +28,9 @@ public class HomeController {
 
      @Autowired
      UserService userService;
+
+    @Autowired
+    PointsService pointsService;
 
     @Autowired
     LevelService levelService;
@@ -77,12 +81,13 @@ public class HomeController {
         user_game.setId(new UserGameID(entity.getId(), firefly.getId()));
         levelService.addLevel(user_game);
 
+        /*adding one subcategory*/
+        SubcategoryEntity subcategoryEntity = pointsService.getOneByName("Volume memory");
+        UserSubcategoryEntity user_subcategory = new UserSubcategoryEntity();
+        user_subcategory.setId(new UserSubcategoryID(entity.getId(), subcategoryEntity.getId()));
+        pointsService.savePoints(user_subcategory);
 
         userService.addUserRole(user.getEmail(),"ROLE_USER");
-
-
-        /* adding games*/
-       // levelService.addLevel(new UserGameEntity());
 
         return new ResponseEntity<Void>(HttpStatus.CREATED);
     }

@@ -17,11 +17,13 @@ public class PointsDao implements IPointsDao {
     @PersistenceContext
     private EntityManager em;
 
-    String findByName = "from SubcategoryEntity as s where s.name= ?";
+    String findByName = "from SubcategoryEntity as s where s.name = ?";
 
     @Override
     public void savePoints(UserSubcategoryEntity points) {
+
         em.persist(points);
+
     }
 
     @Override
@@ -31,13 +33,12 @@ public class PointsDao implements IPointsDao {
         userSubcategory.setPoints(points);
         return em.merge(userSubcategory);
     }
-
     @Override
-    public List<UserSubcategoryEntity> getAllPointsByUser(UserEntity user) {
-        Query query = em.createNamedQuery(UserSubcategoryEntity.findAllPointsByUser).setParameter("user_id",
-                user.getId());
-        List<UserSubcategoryEntity> subcategories = query.getResultList();
-        return subcategories;
+    public int getPoints(Long user, Long subcategory)
+    {
+        UserSubcategoryEntity user_sub = (UserSubcategoryEntity) em.find(UserSubcategoryEntity.class, new UserSubcategoryID(user, subcategory));
+        System.out.println("jfdhgufjvhdfuilxgkhfdgjxhvd;kgxd: " + user_sub.getId().getUserId());
+        return user_sub.getPoints();
     }
 
     @Override
